@@ -1,0 +1,469 @@
+\documentclass[a4paper, 11pt]{scrartcl}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage["ansinew"]{inputenc}
+\usepackage{amssymb}
+\usepackage{mathrsfs} 
+\begin{document}
+
+\begin{center}
+\huge{ Analysis I}
+\end{center}
+
+\begin{flushleft}
+
+\section{Vollständige Induktion}
+\vspace{\baselineskip}
+
+$A_{n}$: Aussage über natürliche Zahlen $n \in \mathbb {N}$.\\
+Zu zeigen: 
+\begin{enumerate}
+	\item $A_{n_{0}}$ gilt (Induktionsanfang)
+	\item Für jedes $A_{n}$ mit $n > n_{0}$ gilt $A_{n+1}$ (Induktionsschritt)
+\end{enumerate}
+\hspace*{3mm} $\Rightarrow A_{n}$ gilt für alle $n > n_{0}$\\
+
+\section {Die reellen Zahlen}
+\subsection{Körperaxiome}
+\subsubsection{Axiome der Addition}
+A1: Assotiativgesetz: $(x+y)+z=x+(y+z)$\\
+A2: Kommutativgesetz: $x+y=y+x$\\
+A3: Neutrales Element: $x+0=0+x=x$\\
+A4: Inverses Element: $\exists -x \in \mathbb {R} : x+(-x)=0$\\
+
+\subsection{Axiome der Mulitplikation}
+M1: Assotiativgesetz: $(x \cdot y)\cdot z=x \cdot(y \cdot z)$\\
+M2: Kommutativgesetz: $x \cdot y=y \cdot x$\\
+M3: Neutrales Element: $x \cdot 1=1 \cdot x=x$\\
+M4: Inveres Element : $\exists \frac {1}{x} \in \mathbb {R} : x \cdot \frac {1}{x} = 1$\\
+D: Distributivgesetz: $x \cdot(y + z)=x \cdot y + x \cdot z$\\
+
+\subsection{Anordnungsaxiome}
+1. Trichotomie: Für jedes $x \in \mathbb {R}$ gilt genau eine der 3 Beziehungen:\\
+$\hspace*{3mm}$ $x>0$, $x=0$, $-x>0$\\
+2. Addivität: $x>0 \wedge y>0 \Rightarrow x+y>0$\\
+3. Muliplikativität: $x>0 \wedge y>0 \Rightarrow x\cdot y>0$\\
+
+\subsection{Vollständigkeitsaxiom}
+Jede nach oben beschränkte nichtleere Teilmenge von $\mathbb{R}$ besitzt ein Supremum\\
+(Jede Cauchy-Folge konvergiert)\\
+
+\subsection{Betrag}
+\subsubsection{Multiplikativität}
+$|x\cdot y|=|x| \cdot |y|$\\
+\subsubsection{Dreiecksungleichung}
+$|x+y|\leq |x|+|y|$\\
+
+\subsection{Archimedisches Axiom}
+Zu je zwei reellen Zahlen $x,y>0$ existiert eine natürliche Zahl n mit $nx>y$.\\
+\subsection {Bernoullische Ungleichung}
+Sei $x\geq -1$:\\
+$(1+x)^n \geq 1+ n \cdot x$\\
+für alle $n\in\mathbb{N}$\\
+\subsection{Binomischer Lehrsatz}
+$(x+y)^n=\sum\limits_{k=0}^n {n \choose k} x^{n-k}y^k$
+\subsection{Beschränkte Menge}
+Eine Teilmenge $T \in \mathbb{R}$ heißt nach oben beschränkt, falls ein $k \in \mathbb{R}$ existiert mit $t \leq k$ für alle $t \in T$. $T$ heißt beschränkt falls T nach oben und nach unten beschränkt ist.\\
+\subsection{Supremum (Infimum)}
+Sei $T \subset \mathbb{R}$. Eine Zahl $k \in \mathbb{R}$ heißt Supremum von $T$ wenn gilt:\\
+\begin{enumerate}
+\item $k$ ist obere Schranke von $T$
+\item $k$ ist kleinste obere Schranke , d.h. is $k' \in \mathbb{R}$ eine weitere obere Schranke dann gilt $k' \geq k$
+\end{enumerate}
+$\hspace*{3mm} \Rightarrow k= \sup T$
+
+\section{Folgen}
+Eine Folge reeller Zahlen ist eine Abbildung $\mathbb{N} \rightarrow \mathbb{R}$, $n\mapsto a_{n}$.
+\subsection{Konvergenz}
+Eine Folge $(a_{n})$ heißt konvergent gegen a falls:\\
+Für alle $\epsilon > 0$ existiert ein $N \in \mathbb{N}$ mit $|a_{n} - a|< \epsilon$ für alle $n>N$.\\
+(Für alle $\epsilon > 0$ liegen fast alle (alle bis auf endlich viele) Folgenglieder im Intervall $(a-\epsilon,a+\epsilon)$).\\
+Falls $(a_{n})$ gegen a konvergiert so schreibe $\lim \limits_{n \to\infty}a_{n}=a$.\\
+Eine Folge $(a_{n})$ heißt divergent, falls sie gegen kein $a \in \mathbb{R}$ konvergiert.\\
+Eine Folge $(a_{n})$ heißt bestimmt divergent, falls sie gegen $\pm \infty$ divergiert.\\
+\subsection{Beschränkheit von Folgen}
+$(a_{n})$ heißt nach oben beschränkt wenn es eine Konstante $K \in \mathbb{R}$ gibt mit:\\
+$a_{n} \leq K$ für alle $n \in \mathbb{N}$.\\
+(Analog für nach unten beschränkt)\\
+$a_{n}$ heißt beschränkt wenn $a_{n}$ nach oben und unten beschränkt ist. \\
+($|a_{n}| \leq K$)\\
+Jede konvergente Folge ist beschränkt.\\
+\subsection{Cauchy Folge}
+Eine Folge $(a_{n})_{n \in \mathbb{N}}$ heißt Cauchy Folge falls $\forall \epsilon > 0$ ein $N \in \mathbb{N}$ existiert mit $|a_{n} - a_{m}|< \epsilon \hspace*{1mm} \forall n,m \geq N$\\
+Eine Folge ist genau dann konvergent wenn sie eine Cauchy Folge ist.
+\subsection{Limes superior (inferior)}
+$\limsup\limits_{n \rightarrow \infty} {a_{n}} := \lim\limits_{n \rightarrow \infty} (sup\{a_{k}:k \geq n\})$\\
+$\liminf\limits_{n \rightarrow \infty} {a_{n}} := \lim\limits_{n \rightarrow \infty} (inf\{a_{k}:k \geq n\})$\\
+\subsection{Teilfolgen}
+Sei $(a_{n})_{n\in\mathbb{N}}$ eine Folge dann ist $(a_{n_{k}})_{k\in\mathbb{N}}$ eine Teilfolge von $(a_{n})$.
+$(a_{n_{k}}) = (a_{n_{0}},a_{n_{1}}, a_{n{2}},...)$ mit $n_{0} <n_{1} <n_{2}<...$
+\subsection{Bolzano-Weierstraß}
+Jede beschränkte Folge $(a_{n})$ reeller Zahlen besitzt eine konvergente Teilfolge.
+\subsection{Häufungspunkte}
+Eine Zahl $a$ heißt Häufungspunkt von $(a_{n})$ wenn es eine Teilfolge von $(a_{n})$ gibt, die gegen $a$ konvergiert.\\
+$\Rightarrow$ Jede beschränkte Folge besitzt mindestens einen Häufungspunkt.
+\subsection{Monotone Folgen}
+Eine Folge $(a_{n})$ heißt:
+\begin{itemize}
+\item monoton wachsend falls $a_{n}\leq a_{n+1}$
+\item streng monoton wachsend falls $a_{n} < a_{n+1}$
+\item monoton fallend falls $a_{n}\geq a_{n+1}$
+\item streng monoton fallend falls $a_{n} > a_{n+1}$
+\end{itemize}
+für alle $n \in\mathbb{N}$.\\
+Jede monotone beschränkte Folge reeller Zahlen konvergiert.
+\subsection{Wurzeln}
+Seien $a>0$ und $x_{0} >0$ relle Zahlen. Die Folge $(x_{n})$ sei durch 
+$x_{n+1}:=\frac{1}{2}(x_{n}+\frac{a}{x_{n}})$ rekursiv definiert. Dann kovergiert $x_{n}$ gegen $\sqrt{a}$.\\
+Seien $a>0$, $x_{0} >0$ und $k>2$ relle Zahlen. Die Folge $(x_{n})$ sei durch 
+$x_{n+1}:=\frac{1}{k}((k-1)x_{n}+\frac{a}{x^{k-1}_{n}})$ rekursiv definiert. Dann kovergiert $x_{n}$ gegen $\sqrt[k]{a}$.
+
+\section{Intervalle}
+diam$([a,b]):= b-a$\\
+\subsection{Intervallschachtelungsprinzip}
+Sei $I_{0}\supset I_{1} \supset I_{2} \supset...$ eine absteigende Folge von abgeschlossenen Intervallen mit $\lim\limits_{n \to\infty}$diam $I_{n} = 0$. Dann existiert genau eine reelle Zahl $x \in \mathbb{R}$ mit $x \in I_{n} \forall n$.
+\subsection{Abgeschlossene Intervalle}
+Sei $T \subset \mathbb{R}$. T ist offen $:\Leftrightarrow \forall t \in T \hspace{1mm}\exists \epsilon > 0$ mit $(t-\epsilon, t+\epsilon) \subset T$. T heißt abgeschlossen wenn $\mathbb{R} \backslash T$ offen ist.\\
+$T \subset \mathbb{R}$ abgeschlossen $\Leftrightarrow$ Ist $(a_{n})_{n \in \mathbb{N}}$ eine konvergente Folge mit Werten in T so ist $\lim\limits_{n \to \infty} a_{n} \in T$.\\
+\subsection{Abschluss}
+Ist $T \subset \mathbb{R}$, so ist $\overline{T} :=\{ a\in \mathbb{R} | \hspace{1mm} \exists  \hspace{1mm} (a_{n})_{n\in\mathbb{N}} \in T$ : $\lim\limits_{n\to\infty} a_{n} = a \}$
+\begin{enumerate}
+\item $\overline{T}$ ist abgeschlossen
+\item $T \subset \overline{T}$
+\item $S \subset \mathbb{R}$ abgeschlossen und $T \subset S$ dann ist $\overline{T} \subset S$
+\item $\overline{T}$ ist die kleinste abgeschlossene Menge die $T$ enthält
+\end{enumerate}
+\subsection{Berührpunkt/Häufungspunkt}
+$a$ heißt Berührpunkt von $A \subset \mathbb{R}$  falls in jeder $\epsilon$-Umgebung von $a$ mindestens ein Punkt von $A$ liegt.\\
+$a$ heißt Häufungspunkt von $A \subset \mathbb{R}$  falls in jeder $\epsilon$-Umgebung von $a$ unendlich viele Punkte von $A$ liegen.\\
+Jeder Punkt $a \in A$ ist Berührpunkt von $A$.\\
+$a$ ist dann Berührpunkt wenn eine Folge $(a_{n})$ mit $a_{n} \in A$ gegen $a$ konvergiert.\\
+$a$ ist dann Häufungspunkt wenn eine Folge $(a_{n})$ mit $a_{n} \in A \backslash \{a\}$ gegen $a$ konvergiert.
+\subsection{Kompaktes Intervall}
+Ein kompaktes Intervall ist ein abgeschlossenes und beschränktes Intervall
+
+\section{Reihen}
+Sei $(a_{n})$ eine Folge. $\sum\limits_{k=n_{0}}^n a_{k}$ ist die Reihe, die die von $a_{n_{0}}$ bis $a_{n}$ alle Glieder der Folge summiert.\\
+\subsection{Geometrische Reihe}
+Für $ x \neq 1$ ist $\sum\limits_{k=0}^n x^k =\frac{1-x^{n+1}}{1-x}$\\
+Für $|x| < 1$ ist $\sum\limits_{k=0}^\infty x^k = \frac{1}{1-x}$\\
+\subsection{Harmonische Reihe}
+$\sum\limits_{k=1}^\infty \frac{1}{k}$ divergiert obwohl $a_{n}=\frac{1}{n}$ konvergiert.
+\subsection{Linearkombination konvergenter Reihen}
+Seien $\sum\limits_{n=0}^\infty a_{n}$ und $\sum\limits_{n=0}^\infty b_{n}$ konvergente Reihen. Dann konvergiert auch $\sum\limits_{n=0}^\infty (\lambda a_{n}+\mu b_{n})$ mit $\lambda,\mu \in\mathbb{R}$\\
+\subsection{Teleskopsummen}
+Jede Folge $a_{n}$ lässt sich als Reihe $\sum\limits_{k=1}^\infty (a_{k} -a_{k-1})$
+\subsection{Cauchysches Konvergenz-Kriterium}
+Eine Reihe $\sum\limits_{n=0}^\infty a_{n}$ konvergiert genau dann wenn gilt:\\
+Zu jedem $\epsilon > 0$ existiert ein $N\in\mathbb{N}$ so dass:
+$|\sum\limits_{k=m}^n a_{k}|< \epsilon$ für alle $n \geq m\geq N$.
+\subsection{Notwendige Bedingung für Konvergenz einer Reihe}
+(aber nicht hinreichend)
+$\lim a_{n} =0$
+\subsection{Leibnizsches Konvergenzkriterium}
+Sei $(a_{n})$ eine monoton fallende Folge nicht-negativer Zahlen mit $\lim\limits_{n\to\infty} a_{n} =0$.\\
+Dann konvergiert die alternierende Reihe $\sum\limits_{n=0}^\infty (-1)^n a_{n}$.
+\subsection{Cauchysches Verdichtungskriterium}
+$\sum\limits_{n=0}^\infty a_n$ konvergiert wenn $\sum\limits_{k=0}^\infty 2^k a_{2^k}$ konvergiert
+\subsection{Absolute Konvergenz}
+Eine Reihe $\sum\limits_{n=0}^\infty a_{n}$ konvergiert absolut wenn $\sum\limits_{n=0}^\infty |a_{n}|$ konvergiert.
+Eine absolut konvergente Reihe konvergiert.
+\subsection{Majoranten-Kriterium}
+Sei $\sum\limits_{n=0}^\infty c_{n}$ eine konvergente Reihe mit nur nicht-negativen Gliedern und $a_{n}$ eine Folge mit:
+$|a_{n}|\leq c_{n}$ für alle $n \in \mathbb{N}$\\
+Dann kovergiert $\sum\limits_{n=0}^\infty a_{n}$ absolut.\\
+$\sum\limits_{n=0}^\infty c_{n}$ ist eine Majorante von $\sum\limits_{n=0}^\infty a_{n}$
+\subsection{Quotienten-Kriterium}
+$\sum\limits_{n=0}^\infty a_{n}$ mit $a_{n}\neq 0$ und $n \geq n_{0}$. Gibt es eine relle Zahl $\theta$ mit $1< \theta < 0$ so dass $|\frac{a_{n+1}}{a_{n}}|< \theta$ für alle n $\geq n_{0}$. Dann konvergiert $\sum\limits_{n=0}^\infty a_{n}$ absolut.
+\subsection{Wurzelkriterium}
+Eine Reihe $\sum\limits_{n=0}^\infty a_{n}$ konvergiert absolut wenn $\limsup\limits_{n\to\infty} \sqrt[n]{a_n} < 1$.
+\subsection{Umordnung von Reihen}
+Sei $\sum\limits_{n=0}^\infty a_{n}$ eine Reihe und $\tau:\mathbb{N}\rightarrow \mathbb{N}$ eine bijektive Abbildung. Dann ist $\sum\limits_{n=0}^\infty a_{\tau(n)}$ eine Umordnung. Sie besteht aus den selben Summanden nur in einer anderen Reihenfolge.
+\subsubsection{Umordnungssatz}
+Die Umordnung einer absolut konvergenten Reihe konvergiert absolut gegen den selben Grenzwert.
+\subsection{Exponentialreihe}
+$exp(x) =\sum\limits_{n=0}^\infty \frac{x^n}{n!}$ konvergiert absolut.
+\subsubsection{Abschätzung des Restgliedes}
+$exp(x)= \sum\limits_{n=0}^N \frac{x^n}{n!} + R_{N+1}(x)$\\
+$|R_{N+1}(x)| \leq 2 \frac{|x|^{N+1}}{(N+1)!}$ für alle $x$ mit $|x| \leq 1 + \frac{1}{2}N$
+\subsection{Cauchy Produkt von Reihen}
+Seien $\sum\limits_{n=0}^\infty a_{n}$ und $\sum\limits_{n=0}^\infty b_{n}$ absolut konvergente Reihen.\\
+$c_{n} =\sum\limits_{k=0}^n a_{k} b_{n-k}$\\
+Dann ist auch die Reihe $\sum\limits_{n=0}^\infty c_{n}$ absolut konvergent mit:\\
+$\sum\limits_{n=0}^\infty c_{n}=(\sum\limits_{n=0}^\infty a_{n})(\sum\limits_{n=0}^\infty b_{n})$
+
+\section{Funktionen}
+\subsection{Operationen auf Funktionen}
+$f:D \rightarrow \mathbb{R}$ und $g:E \rightarrow \mathbb{R}$\\
+$(f+g)(x)=f(x)+g(x)$\\
+$(\lambda f)(x)=\lambda f(x)$\\
+$(fg)(x)=f(x)g(x)$\\
+$(\frac{f}{g})(x)=\frac{f(x)}{g(x)}$\\
+\vspace{\baselineskip}
+$g\circ f:D \rightarrow \mathbb{R}$\\
+$(g \circ f)(x)=g(f(x))$
+\subsection{Stetigkeit}
+Sei $f:D\to \mathbb{R}$, $a\in D$\\
+$f$ ist stetig im Punkt $a$ wenn:\\
+$\lim\limits_{x \to a} f(x)=f(a)$\\
+$f$ ist stetig in $D$ falls $f$ in jedem Punkt von $D$ stetig ist.\\
+Linearkombinationen von stetigen Funktionen sind stetig.\\
+\subsubsection{$\epsilon - \delta$ -Definition}
+$f$ ist genau dann in $D$ stetig wenn gilt:\\
+Zu jedem $\epsilon >0$ existiert ein $\delta >0$, so dass $|f(x)-f(p)|<\epsilon$ für alle $x \in D$ mit $|x-p|< \delta$.
+\subsubsection{Gleichmäßige Stetigkeit}
+$f$ ist genau dann in $D$ gleichmäßig stetig wenn gilt:\\
+Zu jedem $\epsilon >0$ existiert ein $\delta >0$, so dass $|f(x)-f(p)|<\epsilon$ für alle $x,p \in D$ mit $|x-p|< \delta$.\\
+Unterschied zu stetig: Bei gleichmäßiger Stetigkeit ist $\delta$ nur von $\epsilon$ abhängig und nicht von $p$.
+\subsubsection{Zwischenwertsatz}
+Sei $f:[a,b] \rightarrow \mathbb{R}$ eine stetige Funktion mit $f(a) < 0$ und $f(b) > 0$. Dann existiert ein$p \in [a,b]$ mit $f(p) =0$.\\
+$\Rightarrow $ Sei $c$ eine reelle Zahl zwischen $f(a)$ und $f(b)$ dann existiert ein $p$ mit $f(p) =c$.
+\subsection{Kompaktes Intervall}
+Jede in einem kompakten Intervall stetige Funktion nimmt ihr Maximum und Minimum an.\\
+Jede in einem kompakten Intervall stetige Funktion ist dort gleichmäßig stetig.\\
+\subsection{Logarithmus- und Exponentialfunktion}
+$f(x)=e^x$\\
+$f^{-1}(x)=\log(x)$\\
+$\exp_{a} (x)=\exp(x(\log(a))=a^x$\\
+für $a>0$ gilt: $\lim\limits_{n \to \infty} \sqrt[n]{a}=1$\\
+$\log(xy)=\log(x)+\log(y)$\\
+$\log(\frac{x}{y})=\log(x)-\log(y)$\\
+$\log(x+y)=\log(x) + \log(1+ \frac{y}{x})$\\
+$\log(x-y)=\log(x) + \log(1- \frac{y}{x})$\\
+$\log(x^r)=r\log(x)$
+\subsection{Sinus und Kosinus}
+$\cos(x)=Re(e^{ix})=\frac{1}{2}(e^{ix}+e^{-ix})=\sum\limits_{k=0}^\infty (-1)^k \frac{x^{2k}}{(2k)!}$\\
+$\sin(x)=Im(e^{ix})=\frac{1}{2i}(e^{ix}-e^{-ix})=\sum\limits_{k=0}^\infty (-1)^k \frac{x^{2k+1}}{(2k+1)!}$\\
+$\Rightarrow e^{ix}=\cos(x) +i\sin(x)$\\
+$\cos(-x)=\cos(x)$\\
+$\sin(-x)=-\sin(x)$\\
+$\sin^2(x)+\cos^2(x)=1$\\
+$\sin(x+y)=\sin(x)\cos(y)+\sin(y)\cos(x)$\\
+$\cos(x+y)=\cos(x)\cos(y)-\sin(y)\sin(x)$\\
+$\tan(x)=\frac{\sin(x)}{\cos(x)}$\\
+$\cot(x)=\frac{\cos(x)}{\sin(x)}$\\
+$\cos^{-1}(x)=\arccos(x):[-1,1] \rightarrow [0,\pi]$\\
+$\sin^{-1}(x)=\arcsin(x):[-1,1] \rightarrow [-\frac{\pi}{2},\frac{\pi}{2}]$\\
+$\tan^{-1}(x)=\arctan(x):\mathbb{R} \rightarrow -[\frac{\pi}{2}]$\\
+\subsubsection{Polarkoordinaten}
+$z=re^{i \varphi}$ mit $\varphi$ Winkel im Bogenmaß des Vektors und $r=|z|$\\
+\subsection{Differentation}
+Eine Funktion $f$ heißt im Punkt $x$ differenzierbar, falls der Grenzwert\\
+$f'(x) = \lim\limits_{\xi\to x} \frac{f(\xi)-f(x)}{\xi -x}$ existiert.\\
+$(f'(x)=\lim\limits_{h\to 0} \frac{f(x+h) - f(x)}{h})$\\
+\vspace{\baselineskip}
+$f'(x)=\frac{df(x)}{dx}$ heißt Ableitung oder Differentialquotient von $f$. $f$ heißt differenzierbar in $D$ wenn $f$ in jedem Punkt $x \in D$ differenzierbar ist.\\
+Der Differenzialquotient $\frac{f(\xi)-f(x)}{\xi -x}$ ist die Steigung der Sekante durch die Punkte $(x,f(x))$ und $(\xi,f(\xi))$.\\
+$f$ heißt stetig differenzierbar wenn $f(x)$ differenzierbar ist und $f'(x)$ stetig ist.\\
+\vspace{\baselineskip}
+$\frac{d^k f(x)}{dk^2} = f^(k)(x)$ heißt zweite Ableitung von $f$.\\
+\subsection{Lineare Approximierbarkeit}
+$f$ ist dann in $a$ differenzierbar wenn es eine Konstante $c$ gibt so dass:\\
+$f(x)=f(a)+c(x-a)+\varphi (x)$\\
+mit: $\lim\limits_{x\to a} \frac{\varphi (x)}{x-a} =0$
+\subsection{Differentationsregeln}
+\subsubsection{Produktregel}
+$(fg)'(x)=f'(x)g(x)+f(x)g'(x)$
+\subsubsection{Quotientenregel}
+$(\frac{f}{g})'(x)=\frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}$
+\subsubsection{Ableitung der Umkehrfunktion}
+$(f^{-1})'(y)=\frac{1}{f'(x)}=\frac{1}{f'(f^{-1}(y))}$
+\subsubsection{Kettenregel}
+$(f\circ g)=g'(f(x))f'(x)$
+\subsubsection{P-Norm}
+Sei $p\geq 1$ eine relle Zahl. Dann definiert man für Vektoren $x = (x_1,...,x_n) \in \mathbb{C}^n$ eine Norm $||x||_p \in\mathbb{R}_+$ durch $||x||_p = (\sum\limits_{v=1}^n |x_v|^p)^{\frac{1}{p}}$
+\subsubsection{l'Hospital}
+$\lim\limits_{x\to a}\frac{f(x)}{g(x)}=\lim\limits_{x\to a}\frac{f'(x)}{g'(x)}$ wenn $g'\neq 0$ und $g(x) \neq 0$ und $\lim\limits_{x\to a}g(x)=\lim\limits_{x\to a}f(x)=0$ oder $\lim\limits_{x\to a}g(x)= \pm\infty$
+\subsection{Lokales Extremum}
+$f$ hat in $]a,b[$ ein Maximum(Minimum) falls gilt:\\
+$f(x) \geq f(\xi)$ (bzw. $f(x) \geq f(\xi))$ für alle $\xi$ mit $|x-\xi| < \epsilon$.\\
+Wenn $f$ im Punkt $x$ ein Maximum besitzt und in $x$ differenzierbar ist, dann ist $f'(x)=0$.\\
+\vspace{\baselineskip}
+Sei $f$ im Punkt $x$ zweimal differenzierbar und ist $f'(x)=0$ und $f''(x)<0$ (bzw. $f''(x)>0)$. Dann ist $x$ ein Maximum bzw. Minimum von $f$.
+\subsubsection{Satz von Rolle}
+Sei $f:[a,b]$ eine stetige Funktion mit $f(a)=f(b)$ und in $]a,b[$ differenzierbar dann existiert ein $\xi\in ]a,b[$ mit $f'(\xi)=0$.
+\subsection{Mittelwertsatz}
+Sei $f:[a,b] \to \mathbb{R}$ eine stetige Funktion, die in $]a,b[$ differenzierbar ist, dann existiert ein $\xi\in ]a,b[$ mit:\\
+$\frac{f(b)-f(a)}{b-a} =f'(\xi)$
+\subsubsection{Folgerungen aus dem Mittelwertsatz}
+Sei $f:[a,b]$ stetig und differenzierbar in $]a,b[$ ungelte: $ m\leq f'(x) \leq M$ für bestimmte Konstanten $m,M \in \mathbb{R}$. Dann gilt für alle $x_{1},x_{2}$:\\
+$m(x_{2}-x_{1}) \leq f(x_{2})-f(x_{1}) \leq M(x_{2}-x_{1})$
+\subsubsection{Folgerungen aus dem Mittelwertsatz}
+Sei $f'(x)=0$ für alle $x \in ]a,b[$. Dann ist $f$ konstant.
+\subsection{Konvexität}
+Eine Funktion $f:D \to \mathbb{R}$ heißt konvex wenn für alle $x_{1}, x_{2} \in D$ und alle $\lambda$ mit $ 0<\lambda <1$ gilt:\\
+$f(\lambda x_{1}+(1-\lambda)x_{2}) \leq \lambda f(x_{1})+(1-\lambda) f(x_{2})$\\
+$f$ heißt konkav wenn $-f$ konvex ist.\\
+$f$ ist genau dann konvex wenn $f''(x) \geq 0$\\
+(konvex ist linksgekrümmt, konkav rechtsgekrümmt)
+
+\subsection{Riemannsches Integral}
+\subsubsection{Integral für Treppenfunktionen}
+Sei $\varphi :[a,b]\to\mathbb{R}$ Treppenfunktion mit Unterteilung $a=x_0<...<a_n=b$ konstant auf $]x_{k-1},x_k[$ und $c_k=f(x)$ für $x\in ]x_{k-1},x_k[$. Dann ist $\int\limits_{a}^b \varphi (x)dx=\sum\limits_{k=1}^n c_k (x_k -x_{k-1})$.
+\subsubsection{Oberintegral,Unterintegral}
+$\int\limits_a^{b} ^* f(x)dx= \inf\{\int\limits_a^b \varphi (x)dx : \varphi \geq f\}$\\
+$\int\limits_a^{b} _* f(x)dx= \sup\{\int\limits_a^b \varphi (x)dx : \varphi \leq f\}$\\
+$f(x)$ heißt Riemann intergrierbar wenn $\int\limits_a^{b} ^* f(x)dx=\int\limits_a^{b} _* f(x)dx$\\
+$\Rightarrow \int\limits_a^{b} f(x)dx =\int\limits_a^{b} ^* f(x)dx$
+\subsubsection{Integrierbare Funtkionen}
+Jede stetige Funktion ist integrierbar.\\
+Jede monotone Funktion ist integrierbar.
+\subsubsection{Mittelwertsatz der Integralrechnung}
+Seien $f, \varphi :[a,b] \to \mathbb{R}$ stetige Funktionen und $\varphi \geq 0$. Dann existiert ein $\xi \in [a,b]$, so dass
+$\int\limits_a^{b} f(x)\varphi (x) dx = f(\xi ) \int\limits_a^{b} \varphi (x) dx$.
+\subsubsection{Riemannsche Summen}
+Sei $f :[a,b] \to \mathbb{R}$ eine Funktion mit Unterteilung $a=x_0<...<a_n=b$ und $\xi_k$ ein Punkt(Stützstelle) aus $[x_{k-1}, x_k]$. Dann ist $S(Z,f) := \sum\limits_{k=1}^n f(\xi_k)(x_k - x_{k-1})$ die Riemannsche Summe der Funktion $f$ bzgl. $Z$.\\
+Für R-integrierbare Funktionen gilt: $\int\limits_a^b f(x)dx = \lim\limits_{Max(x_k-x_{k-1}) \to 0} \sum\limits_{k=1}^n f(\xi_k)(x_k - x_{k-1})$.
+
+\subsection{Integral}
+Sei $f: I \to\mathbb{R}$ eine stetige Funtkion und $a\in I$. Für $x\in I$ sei $F(x) = \int\limits_a^x f(t) dt$. Dann ist $F: I\to\mathbb{R}$ differenzierbar und es gilt $F' = f$. $F$ heißt Stammfunktion von $f$.\\
+Seien $F,G: I\to\mathbb{R}$ Stammfunktinonen von $f$. Dann ist $F-G$ konstant.\\
+\subsubsection{Fundamentalsatz der Integralrechnung}
+$f:I\to\mathbb{R}$ stetig und $F$ Stammfunktion von $f$. Dann gilt für alle $a,b\in I$: $\int\limits_a^b f(x) = F(b) - F(a)$.
+\subsubsection{Substitutionsregel}
+Sei $f:I\to\mathbb{R}$ stetige und $\varphi :[a,b]\to\mathbb{R}$ stetig differenzierbar mit $\varphi ([a,b])\subset I$. \\
+Dann gilt: $\int\limits_a^b f(\varphi (t))\varphi '(t) dt = \int\limits_{\varphi (a)}^{\varphi (b)} f(x) dx$.
+\subsubsection{Partielle Integration}
+$f,g:[a.b]\to\mathbb{R}$ stetig differenzierbar. Dann gilt: $\int\limits_a^b f(x)g'(x) dx = [f(x)g(x)]_a^b - \int\limits_a^b f'(x)g'(x) dx$
+\subsubsection{Wallissches Produkt}
+$\frac{\pi}{2} = \prod\limits_{n=1}^\infty \frac{4n^2}{4n^2-1}$
+\subsubsection{Trapezregel}
+Sei $f:[0,1]\to\mathbb{R}$ und $\xi\in [0,1]$. $\int\limits_0^1 f(x) dx = \frac{1}{2} (f(0) + f(1)) - \frac{1}{12} f''(\xi)$
+
+\subsection{Uneigentliche Integrale}
+\textbf{1. Eine Integrationsgrenze unendlich}\\
+Sei $f:[a,\infty [\to\mathbb{R}$ eine Funktion die auf jedem Intervall $[a,R], a < R <\infty$ R-integrierbar ist. Falls $\lim\limits_{R\to\infty} \int\limits_a^R f(x) dx$ existert ist das Integral $\int\limits_a^\infty f(x) dx$ konvergent und  $\lim\limits_{R\to\infty} \int\limits_a^R f(x) dx = \int\limits_a^\infty f(x) dx$.\\
+\textbf{2. Eine Integrationsgrenze nicht definiert}\\
+Sei $f:]a,b]\to\mathbb{R}$ eine Funktion die auf jedem Intervall $[a + \epsilon,b], 0 < \epsilon <b-a$ R-integrierbar ist. Falls $\lim\limits_{\epsilon \searrow 0} \int\limits_{a+\epsilon}^b f(x) dx$ existert ist das Integral $\int\limits_a^b f(x) dx$ konvergent und  $\lim\limits_{\epsilon \searrow0} \int\limits_{a+\epsilon}^b f(x) dx = \int\limits_a^b f(x) dx$.\\
+\textbf{3. Beide Integrationsgrenzen kritisch}\\
+Sei $f:]a,b[ \to\mathbb{R}$. $a,b\in\mathbb{R} \cup\{\infty\}$ eine Funktion die über jedem kompakten Teilintervall $[\alpha , \beta ]\subset ]a,b[$ R-integrierbar ist und sei $c\in ]a,b[$. Falls $\int\limits_a^c f(x) dx = \lim\limits_{\alpha\searrow a}  \int\limits_\alpha^c f(x) dx$ und $\int\limits_c^b f(x) dx = \lim\limits_{\beta\nearrow b}  \int\limits_c^{\beta} f(x) dx$ heißt $\int\limits_a^b f(x) dx$ konvergent und $\int\limits_a^b f(x) dx = \int\limits_a^c f(x) dx  + \int\limits_c^b f(x) dx $.
+\subsubsection{Integralvergleichskriterium}
+Sei $f:[1,\infty [ \to \mathbb{R_+}$ eine monoton fallende Funktion. \\Dann gilt: $\sum\limits_{n=1}^\infty  f(n)$ konvergiert $\Leftrightarrow \int\limits_1^\infty f(x) dx$ konvergiert. 
+
+\subsection{Gamma Funktion}
+$\Gamma (x) = \int\limits_0^\infty t^{x-1} e^{-1} dt$\\
+$\Gamma (n+1) = n!$ für alle $n\in\mathbb{N}$\\
+$x\Gamma (x) = \Gamma (x+1)$ für alle $x\in \mathbb{R}_+^*$\\
+$\Gamma (x) = \lim_{n\to\infty} \frac{n!n^x}{x(x+1)\cdot ...\cdot(x+n)}$ für alle $x < 0$
+\subsubsection{Logarithmisch konvex}
+$f:I\to\mathbb{R}_+^*$ heißt logarithmisch konvex wenn $\log f :I\to\mathbb{R}$\\
+Die Gammmafunktion ist logarithmisch konvex.
+
+\subsection{Funktionenfolgen}
+\subsubsection{Gleichmäßige Konvergenz}
+Sei $K$ eine Menge und $f_n:K\to\mathbb{C}, n\in\mathbb{N}$ Funktionen.\\
+1. Die Folge $(f_n)$ konvergiert punktweise gegen eine Funktion $f:K\to\mathbb{C}$ falls für jedes $x\in K$ die Folge $(f_n (x))$ gegen $f(x)$ konvergiert d.h. wenn gilt:\\
+Zu jedem $x\in K$ und $\epsilon > 0$ existiert ein $N = N(x,\epsilon)$, so dass $|f_n(x) - f(x)| <\epsilon$ für alle $n\geq N$.\\
+2. Die Folge $(f_n)$ konvergiert gleichmäßig gegen eine Funktion $f:K\to\mathbb{C}$ falls gilt:\\
+Zu jedem $\epsilon >0 $ existiert ein $N = N(\epsilon)$, so dass $|f_n(x) - f(x)| <\epsilon$ für alle $x\in K$ und alle $n\geq N$.
+\subsubsection{Stetigkeit und gleichmäßige Konvergenz}
+Sei $K\subset\mathbb{C}$ und $f_n :K\to\mathbb{C}, n\in\mathbb{N}$, eine Folge stetiger Funktionen, die gleichmäßig gegen die Funktion $f:K\to\mathbb{C}$ konvergiere. Dann ist auch f stetig.
+\subsubsection{Supremumsnorm}
+Sei $K$ eine Menge und $f:K\to\mathbb{C}$ eine Funktion.\\
+$||f||_K = sup\{|f(x)|:x\in K\}$
+\subsubsection{Konvergenzkriterium von Weierstraß}
+Wenn $\sum\limits_{n=0}^\infty ||f_n||_K <\infty$ dann konvergiert die Reihe $\sum\limits_{n=0}^\infty f_n$ absolut und gleichmäßig auf $K$ gegen eine Funktion $f:K\to\mathbb{C}$
+\subsubsection{Integration}
+Sei $f_n :[a,b]\to\mathbb{R}, n\in\mathbb{N}$ eine Folge stetiger Funktionen. Die Folge konvergiere auf $[a,b]$ gleichmäßig gegen die Funktion $f:[a,b] \to\mathbb{R}$. Dann gilt: $\int\limits_a^b f(x) dx =\int\limits_a^b \lim\limits_{n\to\infty} f_n (x) dx =  \lim\limits_{n\to\infty} \int\limits_a^b f_n (x) dx$.
+\subsubsection{Differentation}
+Sei $f_n :[a,b]\to\mathbb{R}, n\in\mathbb{N}$ eine Folge stetig differenzierbarer Funktionen, die punktweise gegen $f:[a,b]\to\mathbb{R}$ konvergieren. Die Folge der Ableitungen $f'_n$ konvergiere gleichmäßig. Dann ist $f$ differenzierbar und es gilt: $f'(x)=\lim\limits_{n\to\infty} f'_n(x)$ für alle $x\in [a,b]$.
+
+\section{Potenzreihen} 
+Sei $(c_n)$ eine Folge komplexer Zahlen und $a\in\mathbb{C}$. Die Potenzreihe $f(z) =\sum\limits_{n=0}^\infty c_n (z-a)^n$ konvergiere für ein $z_1\in\mathbb{C}$, $z_1\neq a$. Sei $r$ eine relle Zahl mit $0<r<|z_1-a|$ und $K(a,r)=\{z\in\mathbb{C} : |z-a|\leq r\}$. Dann konvergiert die Potenzreihe absolut und gleichmäßig auf $K(a,r)$. \\
+Die formal differenzierte Potenzeihe $g(x) = \sum\limits_{n=1}^\infty nc_n (z-a)^{n-1}$ konvergiert ebenfalls absolut und gleichmäßig auf $K(a,r)$.\\
+$R=sup\{ |z-a|:\sum\limits_{n=0}^\infty c_n (z-a)^n$ konvergiert\} heißt Konvergenzradius.
+\subsection{Hamardsche Formel}
+Sei $f(z) = \sum\limits_{n=0}^\infty c_n (z-a)^n$ mit Konvergenzradius R. Dann gilt:\\
+$R= \frac{1}{\limsup\limits_{n\to\infty} \sqrt[n]{|c_n|}}$
+\subsection{Folgerung aus Quotientenkriterium}
+Sei $f(z) = \sum\limits_{n=0}^\infty c_n (z-a)^n$ mit Konvergenzradius R. Dann gilt:\\
+$R=\lim\limits_{n\to\infty} | \frac{c_n}{c_{n+1}} |$\\
+(Gilt nicht immer)
+\subsection{Ableitung von Potenzreihen}
+Sei $f(x) = \sum\limits_{n=0}^\infty c_n (x-a)^n$ eine Potenzreihe mit dem Konvergenzradius $r>0$. Dann gilt für alle $x \in ]a-r, a+r[$ : $f'(x) = \sum\limits_{n=1}^\infty nc_n (x-a)^{n-1}$\\
+$f:]a-r, a+r[\to\mathbb{R}$ ist beliebig oft differenzierbar und $c_n = \frac{1}{n!} f^{(n)} (a)$ für alle $n\in\mathbb{N}$.
+\subsection{Abelscher Grenzwertsatz}
+Sei $\sum\limits_{n=0}^\infty c_n$ eine konvergente Reihe reeler Zahlen. Dann konvergiert $f(x)= \sum_{n=0}\limits^\infty c_n x^n$
+ 
+\section{Taylor Reihen}
+Sei $f:I\to\mathbb{R}$ $(n+1)$ -mal stetig differenzierbar und $a\in I$. Dann gilt für alle $x\in I$\\
+$f(x)=f(a) + \frac{f'(a)}{1!} (x-a) + \frac{f''(a)}{2!} (x-a)^2 +...+\frac{f^{(n)}(a)}{n!} (x-a)^n + R_{n+1} (x)$ 
+\\wobei $R_{n+1} (x) = \frac{1}{n!} \int\limits_a^x (x-t)^n f^{(n+1)} (t) dt$\\
+Sei $f:I\to\mathbb{R}$ $(n+1)$ -mal stetig differenzierbar mit $f^{(n+1)} (x) = 0$ für alle $x\in I$. Dann ist $f$ ein Polynom vom Grad $\leq n$.
+\subsection{Lagrangesche Form des Restgliedes}
+Sei $f:I\to\mathbb{R}$ $(n+1)$ -mal stetig differenzierbar und $a,x\in I$. Dann existiert ein $\xi$ zwischen $a$ und $x$, so dass $f(x) = \sum\limits_{k=0}^n \frac{f^{(k)} (a)}{k!} (x-a)^k + \frac{f^{(n+1)} (\xi)}{(n+1)!} (x-a)^{n+1}$\\
+Sei $f:I\to\mathbb{R}$ $(n+1)$ -mal stetig differenzierbar und $a\in I$. Dann gilt für alle $x\in I$:\\
+$f(x) = \sum\limits_{k=0}^n \frac{f^{(k)} (a)}{k!} (x-a)^k +\varphi (x)(x-a)^n$ wobei $\lim\limits_{x\to a} \varphi (x)= 0$ ist.
+\subsection{Unendliche Taylor-Reihe}
+Sei $f:I\to\mathbb{R}$ beliebig oft differenzierbar und $a\in I$. \\
+$T [ f,a ](x) = \sum\limits_{k=0}^\infty \frac{f^{(k)}(a)}{k!} (x-a)^k$\\
+Konvergenzradius ist nicht notwendig $>0$\\
+Falls die Taylor-Reihe konvergiert, nicht notwendigerweise gegen $f$.\\
+Die Taylor-Reihe konvergiert für die $x\in I$ für die das Restglied gegen $0$ konvergiert.
+
+\section{Fourier Reihen}
+\subsection{Periodische Funktionen}
+$f:\mathbb{R}\to\mathbb{R}$ heißt periodisch mit Periode $L >0$ wenn $f(x+L)=f(x)$ für alle $x\in\mathbb{R}$\\
+$F$ wird definiert durch $F(x) = f(\frac{L}{2\pi} x)$ mit Periode $2\pi$.\\
+$\Rightarrow$ man kann sich auf Funktionen mit Periode $2\pi$ beschränken.
+\subsection{Trigonometrische Polynome}
+$f:\mathbb{R}\to\mathbb{R}$ heißt trigonometrisches Polynom n-ten Grades wenn $f(x) =\frac{a_0}{2} + \sum\limits_{k=1}^n (a_k\cos kx + b_k \sin kx)$\\
+mit reellen Konstanten $a_k$, $b_k$ mit \\
+$a_k = \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \cos kx dx$ für $k=0,1,...,n$\\
+$b_k = \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \sin kx dx$ für $k=1,2...,n$\\
+\vspace{\baselineskip}
+$f$ lässt sich auch schreiben als:\\
+$f(x) = \sum\limits_{k=-n}^n c_k e^{ikx}$ \\
+mit $c_0 = \frac{a_0}{2}$\\
+$c_k = \frac{1}{2} (a_k - ib_k)$ für $k\geq 1$\\
+$c_{-k} = \frac{1}{2} (a_k + ib_k)$ für $k\geq 1$\\
+\subsection{Fourier Koeffizienten}
+Sei $f:\mathbb{C}\to\mathbb{R}$ eine periodische über das Intervall $[0,2\pi ]$ integrierbare Funktion. Dann heißen die Zahlen\\
+$c_k = \frac{1}{2\pi} \int\limits_{0}^{2\pi} f(x) e^{-ikx} dx$ $k\in\mathbb{Z}$\\
+Fourier-Koeffizienten von $f$. \\
+\vspace{\baselineskip}
+$\mathfrak{F} [f](x) = \sum\limits_{k=-\infty}^\infty c_k e^{ikx}$
+d.h. die Folge der Partialsummen 
+ $\mathfrak{F}_n [f](x) = \sum\limits_{k=-n}^n c_k e^{ikx}$ heißt Fourier-Reihe von $f$.\\
+Die Fourier-Reihe lässt sich auch in der Form 
+$\frac{a_0}{2} + \sum\limits_{k=1}^\infty (a_k\cos kx + b_k \sin kx)$\\ 
+schreiben mit
+$a_k = \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \cos kx dx$ \\
+$b_k = \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \sin kx dx$ \\
+Die Fourier-Reihe muss nicht konvergieren. Wenn sie konvergiert nicht unbedingt gegen $f$.
+\subsection{Skalarprodukt für periodische Funktionen}
+Sei $V$ der $\mathbb{C}$ - VR aller periodischen Funktionen $f:\mathbb{R}\to\mathbb{C}$ die über $[0,2\pi ]$ integrierbar sind.\\
+Das $L^2$-Skalarprodukt wird definiert durch\\
+$<f,g> = \frac{1}{2\pi} \int\limits_0^{2\pi} \overline{f(x) }g(x) dx$ für $f,g\in V$\\
+Eigenschaften:\\
+$<f+g,h> = <f,h>+<g,h>$\\
+$<f,g+h> = <f,g>+<f,h>$\\
+$<\lambda f,g> =\overline{\lambda} <f,g>$\\
+$<f,\lambda g> =\lambda <f,g>$\\
+$<f,g> = \overline{<g,f>}$\\
+Für alle $f\in V$ gilt:
+$<f,f> = \frac{1}{2\pi} \int\limits_0^{2\pi} |f(x)|^2 dx = \frac{1}{2\pi} ||f||^2_2\geq 0$\\
+Aus $<f,f> = 0$ folgt nicht dass $f=0$\\
+Für $f,g\in V$ gilt:\\
+$|<f,g>|\leq||f||_2 \cdot ||g||_2$ (Cauchy-Schwartz)\\
+$||f+g||_2 \leq ||f||_2 + ||g||_2$ (Dreiecksungleichung)\\
+\vspace{\baselineskip}
+Sei $e_k :\mathbb{R}\to\mathbb{C}$ durch $e_k (x) = e^{ikx}$ definiert\\
+so ist $c_k=<e_k , f>$, $k\in\mathbb{Z}$\\
+$<e_k , e_l > = \delta _{kl} \Rightarrow$ $e_k$ ist Orthonormalsystem
+\subsection{Besselsche Ungleichung}
+Sei $f$ periodisch und über $[0,2\pi ]$ integrierbar mit Fouriere Koeffizienten $c_k$. Dann gilt:\\
+$\sum\limits_{k=-\infty}^\infty |c_k |^2 \leq \frac{1}{2\pi} \int\limits_0^{2\pi} |f(x)|^2 dx$\\
+\subsection{Quadratisches Mittel}
+$f,f_n:\mathbb{R}\to\mathbb{C}$ periodische, über $[0,2\pi ]$ integrierbare Funktionen. $(f_n )$ konvergiert im quadratischen Mittel gegen $f$ falls $\lim\limits_{n\to\infty} ||f-f_n||_2 = 0$\\
+Konvergiert $(f_n)$ gleichmäßig gegen $f$ so auch im quadratischen Mittel. \\
+\subsection{Vollständigkeitsrelation}
+Sei $f$ periodisch und auf $[0,2\pi ]$ integrierbar dann konvergiert die Fourier-Reihe von $f$ im quadratischen Mittel gegen $f$. Es gilt die Vollständigkeitsrelation:\\
+$\sum\limits_{k=-\infty}^\infty |c_k |^2 = \frac{1}{2\pi} \int\limits_0^{2\pi} |f(x)|^2 dx$
+\subsection{Gleichmäßige Stetigkeit}
+Sei $f$ eine stetige periodische Funtkion die stückweise stetig differenzierbar ist, dann konvergiert die Fourier-Reihe gleichmäßig gegen $f$.
+
+
+
+\end{flushleft}
+\end{document}
